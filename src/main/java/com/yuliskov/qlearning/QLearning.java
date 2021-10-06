@@ -21,7 +21,7 @@ public class QLearning {
         QLearning ql = new QLearning();
 
         ql.init();
-        ql.calculateQ();
+        ql.calculateQAlt();
         ql.printQ();
         ql.printOptimalPaths();
         //ql.printPolicy();
@@ -147,12 +147,11 @@ public class QLearning {
                 // Pick a random action from the ones possible
                 int index = rand.nextInt(actionsFromCurrentState.length);
                 nextState = actionsFromCurrentState[index];
-
-                double q = Q[crtState][nextState];
+                
                 double maxQ = maxQ(nextState);
                 int r = R[crtState][nextState];
 
-                double value = q + learningRate * (maxQ - q);
+                double value = r + learningRate * maxQ;
                 Q[crtState][nextState] = value;
 
                 crtState = nextState;
