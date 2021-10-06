@@ -147,7 +147,8 @@ public class QLearning {
                 // Pick a random action from the ones possible
                 int index = rand.nextInt(actionsFromCurrentState.length);
                 nextState = actionsFromCurrentState[index];
-                
+
+                double q = Q[crtState][nextState];
                 double maxQ = maxQ(nextState);
                 int r = R[crtState][nextState];
 
